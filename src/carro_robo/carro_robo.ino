@@ -1,12 +1,15 @@
 #include <Ultrasonic.h>
 
 //Ponte H
-int IN1 = 2;
-int IN2 = 4;
-int IN3 = 6;
-int IN4 = 7;
-int velocidadeA = 3;
-int velocidadeB = 5;
+int IN1a = 2;
+int IN2a = 3;
+int IN3a = 4;
+int IN4a = 5;
+
+int IN1b = 8;
+int IN2b = 9;
+int IN3b = 10;
+int IN4b = 11;
 
 //Ultrasonic
 #define TRIGGER_PIN  13
@@ -20,12 +23,14 @@ void setup() {
   Serial.begin(9600);
   
   //Define os pinos para a ponte H como saida
-  pinMode(IN1, OUTPUT);
-  pinMode(IN2, OUTPUT);
-  pinMode(IN3, OUTPUT);
-  pinMode(IN4, OUTPUT);
-  pinMode(velocidadeA,OUTPUT);
-  pinMode(velocidadeB,OUTPUT);
+  pinMode(IN1a, OUTPUT);
+  pinMode(IN2a, OUTPUT);
+  pinMode(IN3a, OUTPUT);
+  pinMode(IN4a, OUTPUT);
+  pinMode(IN1b, OUTPUT);
+  pinMode(IN2b, OUTPUT);
+  pinMode(IN3b, OUTPUT);
+  pinMode(IN4b, OUTPUT);
 }  
     
 void loop()  {     
@@ -57,42 +62,56 @@ void loop()  {
 //Funções para a movimentação do robô
 
 void andaParaFrente() {
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
-  digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, LOW);
-  analogWrite(velocidadeA,255);
-  analogWrite(velocidadeB,255);
+  digitalWrite(IN1a, HIGH);
+  digitalWrite(IN2a, LOW);
+  digitalWrite(IN3a, HIGH);
+  digitalWrite(IN4a, LOW);
+  digitalWrite(IN1b, HIGH);
+  digitalWrite(IN2b, LOW);
+  digitalWrite(IN3b, HIGH);
+  digitalWrite(IN4b, LOW);
 }
 
 void andaParaTras() {
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, HIGH);
-  digitalWrite(IN3, LOW);
-  digitalWrite(IN4, HIGH);
+  digitalWrite(IN1a, LOW);
+  digitalWrite(IN2a, HIGH);
+  digitalWrite(IN3a, LOW);
+  digitalWrite(IN4a, HIGH);
+  digitalWrite(IN1b, LOW);
+  digitalWrite(IN2b, HIGH);
+  digitalWrite(IN3b, LOW);
+  digitalWrite(IN4b, HIGH);
 }
 
 void viraParaEsquerda() {
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
-  digitalWrite(IN3, LOW);
-  digitalWrite(IN4, HIGH);
+  digitalWrite(IN1a, HIGH);
+  digitalWrite(IN2a, LOW);
+  digitalWrite(IN3a, LOW);
+  digitalWrite(IN4a, HIGH);
+  digitalWrite(IN1b, HIGH);
+  digitalWrite(IN2b, LOW);
+  digitalWrite(IN3b, LOW);
+  digitalWrite(IN4b, HIGH);
 }
 
 void viraParaDireita() {
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, HIGH);
-  digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, LOW);
+  digitalWrite(IN1a, LOW);
+  digitalWrite(IN2a, HIGH);
+  digitalWrite(IN3a, HIGH);
+  digitalWrite(IN4a, LOW);
+  digitalWrite(IN1b, LOW);
+  digitalWrite(IN2b, HIGH);
+  digitalWrite(IN3b, HIGH);
+  digitalWrite(IN4b, LOW);
 }
 
 void freia() {
-  if (val=='a') {
-    andaParaTras(); 
-  } else {
-    digitalWrite(IN1, HIGH);
-    digitalWrite(IN2, HIGH);
-    digitalWrite(IN3, HIGH);
-    digitalWrite(IN4, HIGH); 
-  }
+  digitalWrite(IN1a, HIGH);
+  digitalWrite(IN2a, HIGH);
+  digitalWrite(IN3a, HIGH);
+  digitalWrite(IN4a, HIGH);
+  digitalWrite(IN1b, HIGH);
+  digitalWrite(IN2b, HIGH);
+  digitalWrite(IN3b, HIGH);
+  digitalWrite(IN4b, HIGH);
 }
